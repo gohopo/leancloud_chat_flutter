@@ -15,7 +15,7 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
 
 /** LeancloudChatFlutterPlugin */
 public class LeancloudChatFlutterPlugin implements FlutterPlugin, ActivityAware {
-  static LeancloudChatFlutterPlugin Instance = new LeancloudChatFlutterPlugin();
+  public static LeancloudChatFlutterPlugin Instance = new LeancloudChatFlutterPlugin();
   public Activity Activity;
   @Override
   public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
