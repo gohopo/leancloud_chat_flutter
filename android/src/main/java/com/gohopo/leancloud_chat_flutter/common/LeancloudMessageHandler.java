@@ -31,8 +31,8 @@ public class LeancloudMessageHandler extends AVIMTypedMessageHandler<AVIMTypedMe
         super.onMessage(message, conversation, client);
         Map<String, String> result = new HashMap<>();
         result.put("event", Constants.Event_onMessageReceived);
-        result.put("message", JSON.toJSONString(message));
         result.put("conversation", JSON.toJSONString(conversation));
+        result.put("message", JSON.toJSONString(message));
         if (null != events) events.success(result);
     }
 }

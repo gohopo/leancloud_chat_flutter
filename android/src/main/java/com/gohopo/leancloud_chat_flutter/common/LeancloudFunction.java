@@ -62,10 +62,6 @@ public class LeancloudFunction {
     public static AVIMConversation getConversation(String conversationId){
         return getClient().getConversation(conversationId);
     }
-    public static void setConversationRead(String conversationId){
-        AVIMConversation conversation = getConversation(conversationId);
-        conversation.read();
-    }
     public static void sendMessage(String conversationId, String message, final MethodChannel.Result result){
         AVIMConversation conversation = getConversation(conversationId);
         final AVIMTextMessage msg = new AVIMTextMessage();
@@ -83,5 +79,13 @@ public class LeancloudFunction {
                 }
             }
         });
+    }
+    public static int setConversationRead(String conversationId){
+        AVIMConversation conversation = getConversation(conversationId);
+        if(conversation != null){
+            conversation.read();
+            return Constants.Code_success;
+        }
+        return Constants.Code_error;
     }
 }

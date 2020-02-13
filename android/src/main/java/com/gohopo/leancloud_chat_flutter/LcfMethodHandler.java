@@ -59,15 +59,21 @@ public class LcfMethodHandler implements MethodChannel.MethodCallHandler {
                 });
                 break;
             }
-            case Constants.Method_setConversationRead:{
-                String conversationId = call.argument("conversationId");
-                LeancloudFunction.setConversationRead(conversationId);
-                break;
-            }
             case Constants.Method_sendMessage:{
                 final String conversationId = call.argument("conversationId");
                 final String message = call.argument("message");
                 LeancloudFunction.sendMessage(conversationId, message, result);
+                break;
+            }
+            case Constants.Method_setConversationRead:{
+                String conversationId = call.argument("conversationId");
+                int code = LeancloudFunction.setConversationRead(conversationId);
+                if(Constants.Code_success == code){
+                    returnResult(result,"");
+                }
+                else{
+                    returnError(result,code,"");
+                }
                 break;
             }
             default:{
